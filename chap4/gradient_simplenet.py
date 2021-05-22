@@ -38,3 +38,8 @@ def f(W):       #ダミー
 
 dW = numerical_gradient(f, net.W)
 print(dW)
+
+
+#pythonでは、以下のように簡単な関数定義を用いることもできる
+f = lambda w: net.loss(x, t)
+dW = numerical_gradient(f, net.W)
