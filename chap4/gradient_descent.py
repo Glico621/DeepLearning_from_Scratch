@@ -32,3 +32,20 @@ def function_2(x):
 init_x = np.array([-3.0, 4.0])
 ans = gradient_decent(function_2, init_x=init_x, lr=0.1, step_num=100)
 print(ans)
+
+#学習率は大きすぎても、小さすぎてもいい結果にならない
+#学習率あ大きすぎる例
+#大きな値に発散してしまう
+init_x = np.array([-3.0, 4.0])
+ans2 = gradient_decent(function_2, init_x=init_x, lr=10.0, step_num=100)
+print(ans2)
+
+#学習率が小さすぎる例
+#ほとんど更新されずに終わってしまう
+init_x = np.array([-3.0, 4.0])
+ans3 = gradient_decent(function_2, init_x=init_x, lr=1e-10, step_num=100)
+print(ans3)
+
+#適切な学習率を設定することが重要な問題になる
+
+#ハイパーパラメータ:学習率のように、人の手によって設定されるパラメータ
