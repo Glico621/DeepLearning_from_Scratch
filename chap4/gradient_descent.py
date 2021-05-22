@@ -30,5 +30,5 @@ def function_2(x):
 
 #勾配法を使用して最小値の探索を行う
 init_x = np.array([-3.0, 4.0])
-ans = gradient_decent(function_2, init_x=init_x, lr=1, step_num=100)
+ans = gradient_decent(function_2, init_x=init_x, lr=0.1, step_num=100)
 print(ans)
