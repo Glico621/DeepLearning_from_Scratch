@@ -1,3 +1,4 @@
+#p114 2層ニューラルネットワークのクラス
 import sys, os
 sys.path.append(os.pardir)
 from common.functions import *
