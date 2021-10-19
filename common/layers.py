@@ -37,7 +37,7 @@ class Sigmoid:
 
 #p152 Affineレイヤ
 class Affine:
-    def __init__(self):
+    def __init__(self, W, b):
         self.W = W
         self.b = b
         self.x = None
@@ -53,4 +53,28 @@ class Affine:
         dx = np.dot(dout, self.W.T)     #.Tは転置
         self.dW = np.dot(self.x.T, dout)
         self.db = np.sum(dout, axis=0)
+        return dx
+
+
+#p156 ソフトマックスレイヤ
+import sys, os
+sys.path.append(os.pardir)
+from chap4.cross_entropy_error import cross_entropy_error
+from chap3.softmax2 import softmax
+
+class SoftmaxWithLoss:
+    def __init__(self):
+        self.loss = None #損失
+        self.y = None    #softmaxの出力
+        self.t = None    #教師データ(one-hot vector)
+
+    def forward(self, x, t):
+        self.t = t
+        self.y = softmax(x)
+        self.loss = cross_entropy_error(self.y, self.t)
+        return self.loss
+
+    def backward(self, dout=1):
+        batch_size = self.t.shape[0]
+        dx = (self.y - self.t) / batch_size
         return dx
